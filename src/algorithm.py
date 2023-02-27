@@ -2,15 +2,15 @@ import random
 import math
 
 def inputArray() :
-    dimension = int(input("Masukkan jumlah dimensi ruang dari titik: "))
+    dimension = int(input("Masukkan jumlah dimensi ruang dari titik     : "))
     while (dimension <= 2) :
         print("Masukkan salah. Silakan input lagi!")
-        dimension = int(input("Masukkan jumlah dimensi ruang dari titik: "))
+        dimension = int(input("Masukkan jumlah dimensi ruang dari titik     : "))
     
-    vertex = int(input("Masukkan jumlah titik yang ingin dibentuk: "))
+    vertex = int(input("Masukkan jumlah titik yang ingin dibentuk    : "))
     while (vertex <= 1) :
         print("Masukkan salah. Silakan input lagi!")
-        vertex = int(input("Masukkan jumlah titik yang ingin dibentuk: "))
+        vertex = int(input("Masukkan jumlah titik yang ingin dibentuk    : "))
 
     array = [[0 for x in range(dimension)] for y in range(vertex)]
     for i in range(vertex) :
@@ -104,4 +104,4 @@ def bruteForce(array):
                 if d1 <= d:
                     d = d1
                     A = a
-    return d, A
+    return d, A, n
