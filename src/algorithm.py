@@ -74,7 +74,7 @@ def findClosestPair(array, n) :
         else :
             if (dist == d2) :
                 closestArray = closestA2
-        dist, closestArray = sStrip(dist, closestArray, array, n)
+        dist, closestArray, n = sStrip(dist, closestArray, array, n)
     return dist, closestArray, n
 
 def sStrip(d, closestA, array, n) :
@@ -92,11 +92,10 @@ def sStrip(d, closestA, array, n) :
             if (dist < d) :
                 d = dist
                 closestA = a
-    return d, closestA
+    return d, closestA, n
 
 def bruteForce(array):
-    n = 0
-    d, A, n = euclideanDistance(array[0],array[1], n)
+    d, A, n = euclideanDistance(array[0],array[1], -1)
     for i in range(len(array)):
         for j in range(len(array)):
             if i != j :
