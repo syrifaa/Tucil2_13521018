@@ -1,6 +1,7 @@
 import random
 import math
 
+# Input Titik dengan Pembangkit Acak
 def inputArray() :
     dimension = int(input("Masukkan jumlah dimensi ruang dari titik     : "))
     while (dimension <= 2) :
@@ -18,12 +19,22 @@ def inputArray() :
             array[i][j] = round(random.uniform(0,100),2)
     return array
 
+# Print Titik
 def printArray(array) :
     for i in range(len(array)) :
         for j in range(len(array[0])) :
             print(str(array[i][j]), end = " ")
         print("")
 
+# Bubble Sort
+def sortingArray(array) :
+    for i in range(len(array)) :
+        for j in range(0, len(array)-i-1) :
+            if array[j] > array[j+1] :
+                array[j], array[j+1] = array[j+1], array[j]
+    return array
+
+# Membagi Titik menjadi 2 Himpunan
 def divide(array) :
     S1 = []
     S2 = []
@@ -34,6 +45,7 @@ def divide(array) :
             S2.append(array[i])
     return S1, S2
 
+# Menghitung Euclidean Distance
 def euclideanDistance(array1, array2, n) :
     sum = 0
     for i in range(len(array1)) :
@@ -43,12 +55,14 @@ def euclideanDistance(array1, array2, n) :
     n += 1
     return distance, array, n    
 
+# Mencari Minimum
 def min(d1, d2) :
     if (d1 < d2) :
         return d1
     else :
         return d2
 
+# Mencari Pasangan Titik Terdekat
 def findClosestPair(array, n) :
     if (len(array) == 2) :
         dist, closestArray, n = euclideanDistance(array[0], array[1], n)
@@ -77,6 +91,7 @@ def findClosestPair(array, n) :
         dist, closestArray, n = sStrip(dist, closestArray, array, n)
     return dist, closestArray, n
 
+# Mencari Titik Terdekat dalam Sstrip
 def sStrip(d, closestA, array, n) :
     if (len(array) % 2 == 1) :
         x = array[len(array)//2+1][0]
@@ -94,6 +109,7 @@ def sStrip(d, closestA, array, n) :
                 closestA = a
     return d, closestA, n
 
+# Algoritma Brute Force
 def bruteForce(array):
     d, A, n = euclideanDistance(array[0],array[1], -1)
     for i in range(len(array)):

@@ -4,9 +4,9 @@ from visualize import *
 
 def main() :
     arrayV = inputArray()
-    # print("\nS : ")
-    # printArray(arrayV)
-    arrayV.sort(key=lambda vertex: vertex[0])
+    arrayV = sortingArray(arrayV)
+    print("\nS : ")
+    printArray(arrayV)
     n1 = 0
     startTimeDnC = time.time()
     distDnC, closestArrayDnC, n1 = findClosestPair(arrayV, n1)
