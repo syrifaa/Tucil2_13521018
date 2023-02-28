@@ -4,7 +4,7 @@ import math
 # Input Titik dengan Pembangkit Acak
 def inputArray() :
     dimension = int(input("Masukkan jumlah dimensi ruang dari titik     : "))
-    while (dimension <= 2) :
+    while (dimension <= 1) :
         print("Masukkan salah. Silakan input lagi!")
         dimension = int(input("Masukkan jumlah dimensi ruang dari titik     : "))
     
@@ -16,7 +16,7 @@ def inputArray() :
     array = [[0 for x in range(dimension)] for y in range(vertex)]
     for i in range(vertex) :
         for j in range(dimension) :
-            array[i][j] = round(random.uniform(0,100),2)
+            array[i][j] = round(random.uniform(-100,100),2)
     return array
 
 # Print Titik
@@ -26,7 +26,7 @@ def printArray(array) :
             print(str(array[i][j]), end = " ")
         print("")
 
-# Bubble Sort
+# Sorting dengan Bubble Sort
 def sortingArray(array) :
     for i in range(len(array)) :
         for j in range(0, len(array)-i-1) :
@@ -34,7 +34,7 @@ def sortingArray(array) :
                 array[j], array[j+1] = array[j+1], array[j]
     return array
 
-# Membagi Titik menjadi 2 Himpunan
+# Membagi Titik menjadi 2 Himpunan (Kiri(S1) dan Kanan(S2))
 def divide(array) :
     S1 = []
     S2 = []
@@ -113,10 +113,9 @@ def sStrip(d, closestA, array, n) :
 def bruteForce(array):
     d, A, n = euclideanDistance(array[0],array[1], -1)
     for i in range(len(array)):
-        for j in range(len(array)):
-            if i != j :
-                d1, a, n = euclideanDistance(array[i],array[j], n)
-                if d1 <= d:
-                    d = d1
-                    A = a
+        for j in range(i+1,len(array)):
+            d1, a, n = euclideanDistance(array[i],array[j], n)
+            if d1 <= d:
+                d = d1
+                A = a
     return d, A, n
